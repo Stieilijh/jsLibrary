@@ -7,3 +7,8 @@
     border: 2px black solid;
     padding: 20px;
 }
+#addBookForm{
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}

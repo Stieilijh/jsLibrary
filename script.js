@@ -13,12 +13,17 @@ class Book {
 }
 function addBook(newBook){
     let add= true;
-    for(let book in myLibrary){
-        if(book.name===newBook.name){
+    for(let i=0;i<myLibrary.length;i++){
+        if(myLibrary[i].name===newBook.name){
             add=false;
+            document.querySelector(".existsError").
+            textContent="That book already exists";
+            document.querySelector(".existsError").style.color="red";
         }
     }
     if(add){
+        document.querySelector(".existsError").
+            textContent="";
         myLibrary.push(newBook);
     }
 }
@@ -37,15 +42,15 @@ function displayBooks(){
         //name
         const bookName = document.createElement("p");
         book.appendChild(bookName);
-        bookName.textContent=myLibrary[i].name;
+        bookName.textContent="Title-Name : "+myLibrary[i].name;
         //author
         const bookAuthor = document.createElement("p");
         book.appendChild(bookAuthor);
-        bookAuthor.textContent=myLibrary[i].author;
+        bookAuthor.textContent="Author : "+myLibrary[i].author;
         //pages
         const bookPages = document.createElement("p");
         book.appendChild(bookPages);
-        bookPages.textContent=myLibrary[i].pages;
+        bookPages.textContent="Number of Pages : "+myLibrary[i].pages;
         //text for the checkbox
         const readText = document.createElement("div");
         book.appendChild(readText);
@@ -65,9 +70,11 @@ function displayBooks(){
         writeReadStatus();
         function writeReadStatus(){
         if(bookRead.checked){
-            readText.textContent="Read";
+            readText.textContent="Status : Read";
+            readText.style.color="green";
         }else{
-            readText.textContent="Not Read";
+            readText.textContent="Status : Not Read";
+            readText.style.color="red";
         }}
         //remove button
         const removeBookbtn = document.createElement("button");
@@ -95,7 +102,7 @@ addBookForm.addEventListener("submit",()=>{
     addBookForm.reset();
 });
 addbtn.addEventListener("click",()=>{
-addBookForm.style.display="block";
+addBookForm.style.display="flex";
 });
 displayBooks();
 }
