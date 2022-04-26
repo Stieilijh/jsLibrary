@@ -1,5 +1,4 @@
-let myLibrary = [{name:"hehe",author:"haha",pages:"90 pages",haveRead:true},
-{name:"hkfdhsd",author:"uaju",pages:"45 pages",haveRead:false}];
+let myLibrary = [];
 class Book {
     constructor( 
     name= 'Unknown',
@@ -8,7 +7,7 @@ class Book {
     haveRead = false) {
         this.name = name;
         this.author = author;
-        this.pages = pages;
+        this.pages = pages+" pages";
         this.haveRead = haveRead;
     }
 }
@@ -22,10 +21,6 @@ function addBook(newBook){
     if(add){
         myLibrary.push(newBook);
     }
-}
-
-function removeBook(book){
-
 }
 function getBook(name){
     return myLibrary.find((book)=>book.name===name);
@@ -66,7 +61,6 @@ function displayBooks(){
             }else{
                 myLibrary[i].haveRead=false;
             }
-            console.log(myLibrary);
         });
         //remove button
         const removeBookbtn = document.createElement("button");
@@ -81,9 +75,19 @@ function displayBooks(){
 
 window.onload=function(){
 const addbtn = document.querySelector("#addbtn");
+const addBookForm = document.querySelector("#addBookForm");
+addBookForm.style.display="none";
+addBookForm.addEventListener("submit",()=>{
+    const name=document.querySelector("#name").value;
+    const author=document.querySelector("#author").value;
+    const pages=document.querySelector("#pages").value;
+    const haveRead=document.querySelector("#haveRead").checked;
+    addBook(new Book(name,author,pages,haveRead));
+    displayBooks();
+    addBookForm.style.display="none";
+});
 addbtn.addEventListener("click",()=>{
-    
+addBookForm.style.display="block";
 });
 displayBooks();
-
 }

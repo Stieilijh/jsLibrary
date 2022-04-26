@@ -1,3 +1,9 @@
+.books{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 .book{
-    border: 3px black solid;
+    border: 2px black solid;
+    padding: 20px;
 }
