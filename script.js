@@ -49,7 +49,6 @@ function displayBooks(){
         //text for the checkbox
         const readText = document.createElement("div");
         book.appendChild(readText);
-        readText.textContent="Read";
         //checkbox
         const bookRead = document.createElement("input");
         book.appendChild(bookRead);
@@ -61,7 +60,15 @@ function displayBooks(){
             }else{
                 myLibrary[i].haveRead=false;
             }
+            writeReadStatus();
         });
+        writeReadStatus();
+        function writeReadStatus(){
+        if(bookRead.checked){
+            readText.textContent="Read";
+        }else{
+            readText.textContent="Not Read";
+        }}
         //remove button
         const removeBookbtn = document.createElement("button");
         book.appendChild(removeBookbtn);
@@ -85,6 +92,7 @@ addBookForm.addEventListener("submit",()=>{
     addBook(new Book(name,author,pages,haveRead));
     displayBooks();
     addBookForm.style.display="none";
+    addBookForm.reset();
 });
 addbtn.addEventListener("click",()=>{
 addBookForm.style.display="block";

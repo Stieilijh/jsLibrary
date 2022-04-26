@@ -13,13 +13,13 @@
     <div class="books"></div>
     <button id="addbtn">Add Book</button>
     <div class="addBookFormDiv">
-        <form  id="addBookForm" onsubmit=" return false">
+        <form  id="addBookForm" onsubmit=" return false" autocomplete="false">
             <h3>Add new Book</h3>
             <input type="text" placeholder="Title-Name" maxlength="100" required 
             id="name"/>
             <input type="text" placeholder="Author-Name" maxlength="100" required 
             id="author"/>
-            <input type="number" placeholder="Number-of-Pages" max="100000" required 
+            <input type="number" placeholder="Number-of-Pages" max="1000000" required 
             id="pages"/>
             <label for="is-read">Have you read it?</label>
             <input class="checkbox" type="checkbox" id="haveRead" />
