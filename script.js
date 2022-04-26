@@ -10,11 +10,14 @@ class Book {
         this.pages = pages+" pages";
         this.haveRead = haveRead;
     }
+    equals(book = Book){
+        return this.name===book.name&&this.author===book.author;
+    }
 }
 function addBook(newBook){
     let add= true;
     for(let i=0;i<myLibrary.length;i++){
-        if(myLibrary[i].name===newBook.name){
+        if(newBook.equals(myLibrary[i])){
             add=false;
             document.querySelector(".existsError").
             textContent="That book already exists";
@@ -81,7 +84,7 @@ function displayBooks(){
         book.appendChild(removeBookbtn);
         removeBookbtn.textContent="Remove";
         removeBookbtn.addEventListener("click",()=>{
-            myLibrary=myLibrary.filter((bk)=>bk.name!==myLibrary[i].name);
+            myLibrary=myLibrary.filter((bk)=>bk.equals(myLibrary[i]));
             displayBooks();
         });
     }
