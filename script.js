@@ -84,7 +84,11 @@ function displayBooks(){
         book.appendChild(removeBookbtn);
         removeBookbtn.textContent="Remove";
         removeBookbtn.addEventListener("click",()=>{
+            if(myLibrary.length===1){
+                myLibrary=[];
+            }else{
             myLibrary=myLibrary.filter((bk)=>bk.equals(myLibrary[i]));
+            }
             displayBooks();
         });
     }
