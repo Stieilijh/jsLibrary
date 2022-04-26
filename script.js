@@ -110,6 +110,8 @@ addBookForm.addEventListener("submit",()=>{
 });
 addbtn.addEventListener("click",()=>{
 addBookForm.style.display="flex";
+document.querySelector(".existsError").
+textContent="";
 });
 displayBooks();
 }
